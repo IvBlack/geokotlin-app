@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service
 
 @Service
 interface CountryService {
-    fun getAll(): List<CountryDTO>
+    fun getAll(pageIndex: Int): List<CountryDTO>
 }

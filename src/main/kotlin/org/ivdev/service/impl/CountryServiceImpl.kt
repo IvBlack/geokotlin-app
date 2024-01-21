@@ -4,6 +4,7 @@ import org.ivdev.dto.CountryDTO
 import org.ivdev.entity.CountryEntity
 import org.ivdev.repo.CountryRepo
 import org.ivdev.service.CountryService
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 
 /*
@@ -16,8 +17,8 @@ import org.springframework.stereotype.Service
 class CountryServiceImpl(
     private val countryRepo: CountryRepo,
 ) : CountryService {
-    override fun getAll(): List<CountryDTO> {
-        return countryRepo.findByOrderByName()
+    override fun getAll(pageIndex: Int): List<CountryDTO> {
+        return countryRepo.findByOrderByName(PageRequest.of(pageIndex, 2))
             .map { it.toDto() }
     }
 
