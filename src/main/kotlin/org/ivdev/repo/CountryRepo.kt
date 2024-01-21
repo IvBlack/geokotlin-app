@@ -18,4 +18,6 @@ findByOrderByNameDesc, например, отсортирует по убыва�
 */
 interface CountryRepo: CrudRepository<CountryEntity, Int> {
     fun findByOrderByName(pageable: Pageable): List<CountryEntity>
+
+    fun findByNameStartsWithIgnoreCaseOrderByName(prefix: String): List<CountryEntity>
 }

@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RestController
 import org.ivdev.dto.CountryDTO
 import org.ivdev.service.CountryService
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 
@@ -18,4 +19,13 @@ class CountryController(
     @GetMapping
     fun getAll(@RequestParam("page") pageIndex: Int): List<CountryDTO> =
         countryService.getAll(pageIndex)
+
+    @GetMapping("/{id}")
+    fun getById(@PathVariable("id") id: Int): CountryDTO =
+        countryService.getById(id)
+
+    //search object by name prefix
+    @GetMapping("/search")
+    fun searchCountry(@RequestParam("prefix") prefix: String): List<CountryDTO> =
+        countryService.search(prefix)
 }

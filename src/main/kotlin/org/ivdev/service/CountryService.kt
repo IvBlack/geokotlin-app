@@ -7,4 +7,6 @@ import org.springframework.stereotype.Service
 @Service
 interface CountryService {
     fun getAll(pageIndex: Int): List<CountryDTO>
+    fun getById(id: Int): CountryDTO
+    fun search(prefix: String): List<CountryDTO>
 }
